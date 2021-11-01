@@ -12,6 +12,7 @@ class Player {
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
         c.fillStyle = this.color
         c.fill()
+        c.closePath()
     }
 
     shoot(x, y) {
@@ -30,36 +31,9 @@ class Player {
         }
     }
 
-    moveUp() {
-        if (
-            !(this.y - this.radius < 0)
-        ) {
-            this.y -= 5
-            this.draw()
-        }
-    }
-    moveLeft() {
-        if (
-            !(this.x - this.radius < 0)
-        ) {
-            this.x -= 5
-            this.draw()
-        }
-    }
-    moveRight() {
-        if (
-            !(this.x + this.radius > innerWidth)
-        ) {
-            this.x += 5
-            this.draw()
-        }
-    }
-    moveDown() {
-        if (
-            !(this.y + this.radius > innerHeight)
-        ) {
-            this.y += 5
-            this.draw()
-        }
+    move(movement) {
+        this.x += movement.left + movement.right
+        this.y += movement.up + movement.down
+        this.draw()
     }
 }
