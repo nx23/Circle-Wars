@@ -4,6 +4,13 @@ const c = canvas.getContext('2d')
 canvas.width = innerWidth
 canvas.height = innerHeight
 
+// mouse interaction
+const mouse = {
+    x: undefined,
+    y: undefined,
+    down: false
+}
+
 const game = new Game()
 
 function animate() {
@@ -11,6 +18,11 @@ function animate() {
     c.fillStyle = "rgb(0, 0, 0, 0.05)"
     c.fillRect(0, 0, canvas.width, canvas.height)
     game.player.draw()
+
+    if (mouse.down){
+        game.player.shoot(mouse.x, mouse.y)
+    }
+
     game.particles.forEach((particle, particleIndex) => {
         particle.update()
         gsap.to(particle, {
@@ -88,13 +100,18 @@ addEventListener('click', (event) => {
     game.player.shoot(event.clientX, event.clientY)
 })
 
+addEventListener('mousemove', (event) => {
+    mouse.x = event.x
+    mouse.y = event.y
+})
 
-//addEventListener('keyup', (event) => {
-//    // refill magazine
-//    if (event.code === "Space"){
-//        game.player.refillMagazine()
-//    }
-//})
+addEventListener('mousedown', (event) => {
+    mouse.down = true
+})
+
+addEventListener('mouseup', (event) => {
+    mouse.down = false
+})
 
 addEventListener('keypress', (event) => {
     if (!game.lose) {
