@@ -1,0 +1,23 @@
+{
+  "name": "circle-wars",
+  "version": "1.0.0",
+  "description": "Study project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nx23/Circle-Wars.git"
+  },
+  "author": "Gabriel Botareli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nx23/Circle-Wars/issues"
+  },
+  "homepage": "https://github.com/nx23/Circle-Wars#readme",
+  "devDependencies": {
+    "electron": "^16.0.4"
+  }
+}
